@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
+<h1> <%= "#{current_user.email}" if user_signed_in? %></h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+    <%= button_to "sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to "sign in", new_user_session_path %>
+    <%= link_to "sign_up", new_user_registration_path %>
+<% end %>
+
+<div class=container>
+    <ul>
+        <li> <%= link_to "Web Books", books_path %></li>
+        <li>API V1 Books</li>
+        <li>API V1 Android Books</li>
+    </ul>
+</div>
