@@ -10,13 +10,13 @@ class CreateDoorkeeperTables < ActiveRecord::Migration[7.0]
       # Remove `null: false` if you are planning to use grant flows
       # that doesn't require redirect URI to be used during authorization
       # like Client Credentials flow or Resource Owner Password.
-      t.text    :redirect_uri, 
+      t.text    :redirect_uri
       t.string  :scopes,       null: false, default: ''
       t.boolean :confidential, null: false, default: true
       t.timestamps             null: false
     end
 
-    add_index :oauth_applications, :uid, unique: true
+    #add_index :oauth_applications, :uid, unique: true
 
     # create_table :oauth_access_grants do |t|
     #   t.references :resource_owner,  null: false
